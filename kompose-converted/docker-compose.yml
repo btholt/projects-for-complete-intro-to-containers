@@ -1,0 +1,16 @@
+version: "3"
+services:
+  web:
+    image: btholt/node-app # change build to image
+    ports:
+      - "3000:3000"
+    links:
+      - db
+    labels:
+      kompose.service.type: LoadBalancer # need this label for Kubernetes
+    environment:
+      MONGO_CONNECTION_STRING: mongodb://db:27017
+  db:
+    image: mongo:3
+    ports:
+      - "27017" # explicitly expose the port
