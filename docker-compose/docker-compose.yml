@@ -7,7 +7,7 @@ services:
     volumes:
       - .:/home/node/code
       - /home/node/code/node_modules
-    depends_on:
+    links:
       - db
     environment:
       MONGO_CONNECTION_STRING: mongodb://db:27017
